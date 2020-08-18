@@ -10,8 +10,8 @@ option(BUILD_TESTS "Build tests" OFF)
 
 # Look for supporting libraries
 # -----------------------------
-#find_package(Eigen3 REQUIRED)
-
+find_package(Eigen3 3.3 REQUIRED)
+message("Eigen3_include_dir is ${EIGEN3_INCLUDE_DIR}")
 # Setup library
 # -------------
 
@@ -21,7 +21,7 @@ target_include_directories(Spectra
 		$<INSTALL_INTERFACE:include>
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 		)
-target_link_libraries(Spectra INTERFACE eigen)
+target_link_libraries(Spectra INTERFACE Eigen3::Eigen)
 
 # Parse additional options
 # ------------------------
